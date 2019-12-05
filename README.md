@@ -1,6 +1,7 @@
-# Frigate - Realtime Object Detection for RTSP Cameras
+# Frigate V3 - Realtime Object Detection for RTSP Cameras
 Uses OpenCV and Tensorflow to perform realtime object detection locally for RTSP cameras. Designed for integration with HomeAssistant or others via MQTT.
 
+- Can detect people, cars, trucks, buses, dogs, bicycles nad motorcycles.
 - Leverages multiprocessing and threads heavily with an emphasis on realtime over processing every frame
 - Allows you to define specific regions (squares) in the image to look for motion/objects
 - Motion detection runs in a separate process per region and signals to object detection to avoid wasting CPU cycles looking for objects when there is no motion
@@ -85,7 +86,7 @@ Access the mjpeg stream at http://localhost:5000
 camera:
   - name: Camera Last Person
     platform: generic
-    still_image_url: http://<ip>:5000/best_person.jpg
+    still_image_url: http://<ip>:5000/best_person.jpg (best_car.jpg, best_truck.jpg...)
 
 binary_sensor:
   - name: Camera Motion

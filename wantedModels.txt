@@ -13,7 +13,6 @@ truck
 
 light
 fire
-
 cat
 
 dog

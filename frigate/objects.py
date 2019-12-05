@@ -78,7 +78,7 @@ class BestFrameOfType(threading.Thread):
                 detected_objects = self.detected_objects.copy()
                 
                 #Changed to provide images for each wanted object
-                detected_wanted_objects = [obj for obj in detected_objects if obj['name'] = self.object_type] 
+                detected_wanted_objects = [obj for obj in detected_objects if obj['name'] == self.object_type] 
                 
                 # make a copy of the recent frames
                 recent_frames = self.recent_frames.copy()

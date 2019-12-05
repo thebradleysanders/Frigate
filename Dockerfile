@@ -37,7 +37,7 @@ RUN  pip install -U pip \
  jupyter \
  pandas \
  moviepy \
- tensorflow \
+ tensorflow==1.12.2 \
  keras \
  autovizwidget \
  Flask \
@@ -45,7 +45,7 @@ RUN  pip install -U pip \
  paho-mqtt
 
 # Install tensorflow models object detection
-RUN GIT_SSL_NO_VERIFY=true git clone -q https://github.com/tensorflow/models /usr/local/lib/python3.5/dist-packages/tensorflow/models
+RUN GIT_SSL_NO_VERIFY=true git clone -q https://github.com/thebradleysanders/models /usr/local/lib/python3.5/dist-packages/tensorflow/models
 RUN wget -q -P /usr/local/src/ --no-check-certificate https://github.com/google/protobuf/releases/download/v3.5.1/protobuf-python-3.5.1.tar.gz
 
 # Download & build protobuf-python

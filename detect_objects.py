@@ -16,7 +16,7 @@ import paho.mqtt.client as mqtt
 
 from frigate.util import tonumpyarray
 from frigate.mqtt import MqttMotionPublisher, MqttObjectPublisher
-from frigate.objects import ObjectParser, ObjectCleaner, BestPersonFrame
+from frigate.objects import ObjectParser, ObjectCleaner, BestFrameOfType
 from frigate.motion import detect_motion
 from frigate.video import fetch_frames, FrameTracker
 from frigate.object_detection import detect_objects
@@ -127,7 +127,7 @@ def main():
         recent_motion_frames, motion_changed, [region['motion_detected'] for region in regions])
     frame_tracker.start()
     
-    # start a thread to store the highest scoring recent frame:
+    # start a thread to store the highest scoring recent frame of each type:
     
     #PERSON
     best_person_frame = BestFrameOfType("person", objects_parsed, recent_motion_frames, DETECTED_OBJECTS, motion_changed, [region['motion_detected'] for region in regions])
@@ -317,6 +317,7 @@ def main():
         detection_process.join()
     for motion_process in motion_processes:
         motion_process.join()
+        
     frame_tracker.join()
     best_person_frame.join()
     best_car_frame.join()
